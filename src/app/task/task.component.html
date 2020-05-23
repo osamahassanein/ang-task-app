@@ -1,0 +1,56 @@
+<mat-card class="example-card" *ngIf="task">
+  <mat-card-header>
+    <div mat-card-avatar>
+      <span class="material-icons">
+        work
+      </span>
+    </div>
+    <mat-card-title>{{ task.task_id }}</mat-card-title>
+    <mat-card-subtitle>{{ task.status }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>
+      {{ task.description }}
+    </p>
+    <p>Creation Date: {{ task.creation_date }}</p>
+    <p>Last Update Date: {{ task.last_update_date }}</p>
+  </mat-card-content>
+  <mat-card-footer>
+    <div>Progress: {{ progressVal }}%</div>
+    <mat-progress-bar
+      mode="determinate"
+      value="{{ progressVal }}"
+    ></mat-progress-bar>
+  </mat-card-footer>
+</mat-card>
+
+<mat-table
+  [dataSource]="subtasks"
+  class="mat-elevation-z8"
+  *ngIf="subtasks.length != 0"
+>
+  <!-- Position Column -->
+  <ng-container matColumnDef="ID">
+    <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+    <mat-cell *matCellDef="let subtask"> {{ subtask.subtask_id }} </mat-cell>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="Description">
+    <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+    <mat-cell *matCellDef="let subtask"> {{ subtask.description }} </mat-cell>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Status">
+    <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
+    <mat-cell *matCellDef="let subtask">
+      <mat-icon>{{
+        subtask.status == "done" ? "done" : "clear"
+      }}</mat-icon></mat-cell
+    >
+  </ng-container>
+  <!-- *matHeaderRowDef="displayedColumns"-->
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+</mat-table>
