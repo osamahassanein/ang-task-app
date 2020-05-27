@@ -27,6 +27,7 @@ import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubtaskDialogComponent } from './subtask-dialog/subtask-dialog.component';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -58,6 +59,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatDialogModule,
     ReactiveFormsModule,
     MatSnackBarModule,
+    MatPaginatorModule,
   ],
   providers: [TaskapiService, DatePipe],
   bootstrap: [AppComponent],

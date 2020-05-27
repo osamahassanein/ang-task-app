@@ -1,11 +1,18 @@
-  .btn-fab-bottom-right{
-    position: fixed !important;
-    right: 15px;
-    bottom: 15px;
+.btn-fab-bottom-right {
+  position: fixed !important;
+  right: 15px;
+  bottom: 15px;
 }
 
-.center{
+.center {
   display: inline-block;
   width: 25%;
   margin: 10px;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+table {
+  width: 75%;
 }

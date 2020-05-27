@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 // import { Task } from '../model/task';
 import { TaskapiService } from '../taskapi.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-task-list',
@@ -10,8 +12,18 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit {
-  mTasks: Array<any>;
+  mTasks: any[] = [];
   progressVal = 0;
+  displayedColumns: string[] = [
+    'ID',
+    'Description',
+    'Status',
+    'Requester',
+    'Creation Date',
+    'Actions',
+  ];
+  dataSource: any;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor(
     private taskapi: TaskapiService,
@@ -30,10 +42,12 @@ export class TaskListComponent implements OnInit {
     this.taskapi.getAllTasks().then((tasks) => {
       console.log('tasks >>>>' + JSON.stringify(tasks));
       this.mTasks = tasks;
+      this.dataSource = new MatTableDataSource<any>(this.mTasks);
+      this.dataSource.paginator = this.paginator;
     });
   }
 
-  btnClick(id: number) {
+  taskDetails(id: number) {
     this.router.navigate(['/api/tasks', id]);
   }
 
@@ -56,5 +70,9 @@ export class TaskListComponent implements OnInit {
 
   addTask() {
     this.router.navigate(['/api/tasks/create-task']);
+  }
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
