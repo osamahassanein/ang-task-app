@@ -1,9 +1,10 @@
 <mat-card class="example-card" *ngFor="let task of mTasks">
   <mat-card-header>
-    <div mat-card-avatar >
+    <div mat-card-avatar>
       <span class="material-icons">
         work
-      </span></div>
+      </span>
+    </div>
     <mat-card-title>{{ task.task_id }}</mat-card-title>
     <mat-card-subtitle>{{ task.status }}</mat-card-subtitle>
   </mat-card-header>
@@ -11,14 +12,21 @@
     <p>
       {{ task.description }}
     </p>
-    <p>
-      Creation Date: {{ task.creation_date }}
-    </p>
-    <p>
-      Last Update Date: {{ task.last_update_date }}
-    </p>
+    <p>Requester: {{ task.requester }}</p>
+    <p>Creation Date: {{ task.creation_date }}</p>
+    <p>Last Update Date: {{ task.last_update_date }}</p>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-button (click)=btnClick(task.task_id)>Details</button>
+    <button mat-button (click)="btnClick(task.task_id)">Details</button>
   </mat-card-actions>
 </mat-card>
+
+<button
+  mat-fab
+  color="warn"
+  class="btn-fab-bottom-right"
+  aria-label="Add Task"
+  (click)="addTask()"
+>
+  <mat-icon>add</mat-icon>
+</button>

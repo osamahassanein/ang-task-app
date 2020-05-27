@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { TaskListComponent } from './task-list/task-list.component';
 import { TaskComponent } from './task/task.component';
+import { CreateTaskComponent } from './create-task/create-task.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'api/tasks',
     component: TaskListComponent
+  },
+  {
+    path: 'api/tasks/create-task',
+    component: CreateTaskComponent
   },
   {
     path: 'api/tasks/:id',

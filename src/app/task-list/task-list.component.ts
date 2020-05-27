@@ -32,4 +32,8 @@ export class TaskListComponent implements OnInit {
   btnClick(id: number) {
     this.router.navigate(['/api/tasks', id]);
   }
+
+  addTask() {
+    this.router.navigate(['/api/tasks/create-task']);
+  }
 }

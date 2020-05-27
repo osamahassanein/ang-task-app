@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Add Subtasks to task ID: {{ taskId }}</h2>
+
+<mat-dialog-content [formGroup]="form">
+  <mat-form-field>
+    <input matInput placeholder="Description" formControlName="description" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-select placeholder="Select Status" formControlName="status">
+      <mat-option value="Done"> Done</mat-option>
+      <mat-option value="Not done"> Not done</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button class="mat-raised-button" (click)="close()">
+    Close
+  </button>
+
+  <button class="mat-raised-button mat-primary" (click)="createSubtask()">
+    Save
+  </button>
+</mat-dialog-actions>

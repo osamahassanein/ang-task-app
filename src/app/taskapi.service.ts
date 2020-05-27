@@ -32,6 +32,26 @@ export class TaskapiService {
       .catch(this.handleError);
   }
 
+  createTask(task: any): Promise<any> {
+    const url = `${this.apiUrl}/create-task`;
+    console.log('createTask URL >>>' + url);
+    return this.http
+      .post(url, task)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  createSubtask(subtask: any): Promise<any> {
+    const url = `${this.apiUrl}/create-subtask`;
+    console.log('createSubTask URL >>>' + url);
+    return this.http
+      .post(url, subtask)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   getSubTasksByTaskId(id: number): Promise<any>{
     const url = `${this.apiUrl}/${id}/subtasks`;
     console.log('getSubTasksByTaskId URL' + url);
