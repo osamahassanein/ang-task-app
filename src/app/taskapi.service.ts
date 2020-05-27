@@ -32,6 +32,16 @@ export class TaskapiService {
       .catch(this.handleError);
   }
 
+  deleteTask(id: number): Promise<any> {
+    const url = `${this.apiUrl}/${id}`;
+    console.log('getTaskByID URL' + url);
+    return this.http
+      .delete(url)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
   createTask(task: any): Promise<any> {
     const url = `${this.apiUrl}/create-task`;
     console.log('createTask URL >>>' + url);

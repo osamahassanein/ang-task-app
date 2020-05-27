@@ -1,4 +1,4 @@
-<form class="example-form">
+<form class="center">
   <mat-form-field class="task-full-width">
     <mat-label>Description</mat-label>
     <textarea matInput placeholder="Task description..." [(ngModel)]="task.description" name="desc"></textarea>
@@ -33,7 +33,7 @@
     </tr>
     <tr>
         <td>
-            <button mat-button (click)=createTask()>Create</button>
+            <button mat-raised-button (click)=createTask()>Create</button>
         </td>
     </tr>
   </table>

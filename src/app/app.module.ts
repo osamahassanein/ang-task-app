@@ -26,6 +26,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SubtaskDialogComponent } from './subtask-dialog/subtask-dialog.component';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { SubtaskDialogComponent } from './subtask-dialog/subtask-dialog.componen
     FormsModule,
     MatDialogModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
   ],
   providers: [TaskapiService, DatePipe],
   bootstrap: [AppComponent],

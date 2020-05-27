@@ -2,18 +2,22 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 // import { Task } from '../model/task';
 import { TaskapiService } from '../taskapi.service';
-import { async } from '@angular/core/testing';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-task-list',
   templateUrl: './task-list.component.html',
-  styleUrls: ['./task-list.component.css']
+  styleUrls: ['./task-list.component.css'],
 })
 export class TaskListComponent implements OnInit {
   mTasks: Array<any>;
   progressVal = 0;
 
-  constructor(private taskapi: TaskapiService, private router: Router) {
+  constructor(
+    private taskapi: TaskapiService,
+    private router: Router,
+    private delSnackBar: MatSnackBar
+  ) {
     console.log('TaskListComponent constructor called');
   }
 
@@ -23,7 +27,7 @@ export class TaskListComponent implements OnInit {
   }
 
   getAllTasks(): void {
-    this.taskapi.getAllTasks().then(tasks => {
+    this.taskapi.getAllTasks().then((tasks) => {
       console.log('tasks >>>>' + JSON.stringify(tasks));
       this.mTasks = tasks;
     });
@@ -31,6 +35,23 @@ export class TaskListComponent implements OnInit {
 
   btnClick(id: number) {
     this.router.navigate(['/api/tasks', id]);
+  }
+
+  deleteTask(id: number) {
+    if (confirm('Are you sure to delete task? ' + id)) {
+      this.taskapi.deleteTask(id).then((tasks) => {
+        console.log('deleteTask response >>>>' + JSON.stringify(tasks));
+        this.getAllTasks();
+      });
+
+      this.delSnackBar.open(
+        'Task with id ' + id + ' deleted successfully!',
+        'Dismiss',
+        {
+          duration: 3000,
+        }
+      );
+    }
   }
 
   addTask() {

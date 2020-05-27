@@ -22,7 +22,7 @@ export class TaskComponent implements OnInit {
   progTempVal = 0;
   progressVal = 0;
   id = +this.route.snapshot.paramMap.get('id');
-  displayedColumns: string[] = ['ID', 'Description', 'Status'];
+  displayedColumns: string[] = ['ID', 'Description', 'Status', 'Creation Date'];
   ngOnInit(): void {
     this.getTask();
     this.getSubTasks();

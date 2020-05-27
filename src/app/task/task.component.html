@@ -1,4 +1,4 @@
-<mat-card class="example-card" *ngIf="task">
+<mat-card class="center" *ngIf="task">
   <mat-card-header>
     <div mat-card-avatar>
       <span class="material-icons">
@@ -14,10 +14,9 @@
     </p>
     <p>Requester: {{ task.requester }}</p>
     <p>Creation Date: {{ task.creation_date }}</p>
-    <p>Last Update Date: {{ task.last_update_date }}</p>
   </mat-card-content>
   <mat-card-footer>
-    <div>Progress: {{ progressVal }}%</div>
+    <div style="margin-left: 15px;">Progress: {{ progressVal }}%</div>
     <mat-progress-bar
       mode="determinate"
       value="{{ progressVal }}"
@@ -30,20 +29,19 @@
   class="mat-elevation-z8"
   *ngIf="subtasks.length != 0"
 >
-  <!-- Position Column -->
+  
   <ng-container matColumnDef="ID">
     <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
     <mat-cell *matCellDef="let subtask"> {{ subtask.subtask_id }} </mat-cell>
   </ng-container>
 
-  <!-- Weight Column -->
+  
   <ng-container matColumnDef="Description">
     <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
     <mat-cell *matCellDef="let subtask"> {{ subtask.description }} </mat-cell>
   </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="Status">
+   <ng-container matColumnDef="Status">
     <mat-header-cell *matHeaderCellDef> Status </mat-header-cell>
     <mat-cell *matCellDef="let subtask">
       <mat-icon>{{
@@ -51,7 +49,12 @@
       }}</mat-icon></mat-cell
     >
   </ng-container>
-  <!-- *matHeaderRowDef="displayedColumns"-->
+
+  <ng-container matColumnDef="Creation Date">
+    <mat-header-cell *matHeaderCellDef> Creation Date </mat-header-cell>
+    <mat-cell *matCellDef="let subtask"> {{ subtask.creation_date }} </mat-cell>
+  </ng-container>
+  
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
 </mat-table>
