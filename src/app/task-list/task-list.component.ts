@@ -68,6 +68,16 @@ export class TaskListComponent implements OnInit {
     }
   }
 
+  updateTask(task: any) {
+    /*
+    this.taskapi.updateTask(task).then((res) => {
+      console.log('updateTask response >>>>' + JSON.stringify(res));
+      this.getAllTasks();
+    });*/
+
+    this.router.navigate(['/api/tasks/create-task', task]);
+  }
+
   addTask() {
     this.router.navigate(['/api/tasks/create-task']);
   }

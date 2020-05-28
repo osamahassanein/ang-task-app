@@ -34,9 +34,19 @@ export class TaskapiService {
 
   deleteTask(id: number): Promise<any> {
     const url = `${this.apiUrl}/${id}`;
-    console.log('getTaskByID URL' + url);
+    console.log('deleteTask URL' + url);
     return this.http
       .delete(url)
+      .toPromise()
+      .then(response => response as any)
+      .catch(this.handleError);
+  }
+
+  updateTask(task: any): Promise<any> {
+    const url = `${this.apiUrl}`;
+    console.log('updateTask URL' + url);
+    return this.http
+      .put(url, task)
       .toPromise()
       .then(response => response as any)
       .catch(this.handleError);

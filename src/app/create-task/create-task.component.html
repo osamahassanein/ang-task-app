@@ -1,7 +1,12 @@
 <form class="center">
   <mat-form-field class="task-full-width">
     <mat-label>Description</mat-label>
-    <textarea matInput placeholder="Task description..." [(ngModel)]="task.description" name="desc"></textarea>
+    <textarea
+      matInput
+      placeholder="Task description..."
+      [(ngModel)]="task.description"
+      name="desc"
+    ></textarea>
   </mat-form-field>
 
   <table class="task-full-width" cellspacing="0">
@@ -9,11 +14,16 @@
       <td>
         <mat-form-field class="task-full-width">
           <mat-label>Requester</mat-label>
-          <input matInput placeholder="Task requestor..." [(ngModel)]="task.requester" name="reqr"/>
+          <input
+            matInput
+            placeholder="Task requestor..."
+            [(ngModel)]="task.requester"
+            name="reqr"
+          />
         </mat-form-field>
       </td>
       <td>
-        <mat-form-field  class="task-full-width">
+        <mat-form-field class="task-full-width">
           <mat-label>Task status</mat-label>
           <mat-select [(ngModel)]="task.status" name="sts">
             <mat-option *ngFor="let status of statusList" [value]="status">
@@ -24,17 +34,23 @@
       </td>
     </tr>
     <tr>
-        <td>
-            <mat-form-field class="task-full-width">
-                <mat-label>Ceation Date</mat-label>
-                <input matInput placeholder="Creation Date..." [(ngModel)]="task.creation_date" name="crDate" disabled="true"/>
-              </mat-form-field>
-        </td>
+      <td>
+        <mat-form-field class="task-full-width">
+          <mat-label>Ceation Date</mat-label>
+          <input
+            matInput
+            placeholder="Creation Date..."
+            [(ngModel)]="task.creation_date"
+            name="crDate"
+            disabled="true"
+          />
+        </mat-form-field>
+      </td>
     </tr>
     <tr>
-        <td>
-            <button mat-raised-button (click)=createTask()>Create</button>
-        </td>
+      <td>
+        <button mat-raised-button (click)="saveTask()">{{ btnLabel }}</button>
+      </td>
     </tr>
   </table>
 </form>

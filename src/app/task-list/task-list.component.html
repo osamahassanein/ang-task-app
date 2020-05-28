@@ -43,8 +43,11 @@
       <button mat-raised-button (click)="taskDetails(task.task_id)">
         Details
       </button>
-      <button mat-raised-button color="warn" (click)="deleteTask(task.task_id)">
-        Delete
+      <button mat-mini-fab color="warn" (click)="deleteTask(task.task_id)">
+        <mat-icon>clear</mat-icon>
+      </button>
+      <button mat-mini-fab color="primary" (click)="updateTask(task)">
+        <mat-icon>edit</mat-icon>
       </button></mat-cell
     >
   </ng-container>
