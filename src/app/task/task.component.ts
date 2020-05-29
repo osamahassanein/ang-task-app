@@ -29,7 +29,6 @@ export class TaskComponent implements OnInit {
   }
 
   getTask(): void {
-    console.log('Button DETAILS was Clicked>>>>>>');
     this.taskapi.getTaskByID(this.id).then((task) => {
       console.log('tasks >>>>' + JSON.stringify(task));
       this.task = task;

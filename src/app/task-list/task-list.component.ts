@@ -75,7 +75,7 @@ export class TaskListComponent implements OnInit {
       this.getAllTasks();
     });*/
 
-    this.router.navigate(['/api/tasks/create-task', task]);
+    this.router.navigate(['/api/tasks/create-task'], { state: task });
   }
 
   addTask() {

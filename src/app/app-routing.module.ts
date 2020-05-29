@@ -24,10 +24,6 @@ const routes: Routes = [
     component: CreateTaskComponent
   },
   {
-    path: 'api/tasks/create-task/:task',
-    component: CreateTaskComponent
-  },
-  {
     path: 'api/tasks/:id',
     component: TaskComponent
     // }

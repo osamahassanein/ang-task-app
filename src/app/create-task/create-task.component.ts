@@ -28,7 +28,25 @@ export class CreateTaskComponent implements OnInit {
     private route: ActivatedRoute,
     public datepipe: DatePipe
   ) {
+    const passedTask = this.router.getCurrentNavigation().extras.state;
+    console.log(passedTask);
+    if (passedTask !== undefined) {
+      this.task = {
+        task_id: passedTask.task_id,
+        description: passedTask.description,
+        status: passedTask.status,
+        requester: passedTask.requester,
+        creation_date: this.datepipe.transform(
+          passedTask.creation_date,
+          'yyyy-MM-dd hh:m:ss'
+        ),
+        last_update_date: this.latestDate,
+      };
+      this.btnLabel = 'Edit';
+    }
+    /*
     this.route.params.subscribe((params) => {
+      console.log('params >>>' + JSON.stringify(params));
       if (params.task_id) {
         console.log(params);
         this.task = {
@@ -45,6 +63,7 @@ export class CreateTaskComponent implements OnInit {
         this.btnLabel = 'Edit';
       }
     });
+    */
   }
 
   ngOnInit(): void {}

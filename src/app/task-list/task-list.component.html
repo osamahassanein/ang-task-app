@@ -34,7 +34,7 @@
 
   <ng-container matColumnDef="Creation Date">
     <mat-header-cell *matHeaderCellDef> Creation Date </mat-header-cell>
-    <mat-cell *matCellDef="let task"> {{ task.creation_date }} </mat-cell>
+    <mat-cell *matCellDef="let task"> {{ task.creation_date | date :  "dd-MM-yyyy hh:m:ss"}} </mat-cell>
   </ng-container>
 
   <ng-container matColumnDef="Actions">

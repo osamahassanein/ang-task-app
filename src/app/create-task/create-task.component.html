@@ -46,6 +46,18 @@
           />
         </mat-form-field>
       </td>
+      <td>
+        <mat-form-field class="task-full-width">
+          <mat-label>Last Update Date</mat-label>
+          <input
+            matInput
+            placeholder="Creation Date..."
+            [(ngModel)]="task.last_update_date"
+            name="luDate"
+            disabled="true"
+          />
+        </mat-form-field>
+      </td>
     </tr>
     <tr>
       <td>

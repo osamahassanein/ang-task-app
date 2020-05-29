@@ -13,7 +13,8 @@
       {{ task.description }}
     </p>
     <p>Requester: {{ task.requester }}</p>
-    <p>Creation Date: {{ task.creation_date }}</p>
+    <p>Creation Date: {{ task.creation_date  | date :  "dd-MM-yyyy hh:m:ss"}}</p>
+    <p>Last Update Date: {{ task.last_update_date  | date :  "dd-MM-yyyy hh:m:ss"}}</p>
   </mat-card-content>
   <mat-card-footer>
     <div style="margin-left: 15px;">Progress: {{ progressVal }}%</div>
